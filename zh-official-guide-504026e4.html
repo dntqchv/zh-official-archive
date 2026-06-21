@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>从一条笔记开始 · 爱游戏资料索引</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #f9fafb;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans CJK SC', sans-serif;
+      color: #1f2937;
+      line-height: 1.7;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2.5rem 1.5rem 3rem;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 720px;
+      width: 100%;
+      background: #ffffff;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.04), 0 2px 12px rgba(0,0,0,0.02);
+      border-radius: 28px;
+      padding: 3rem 2.5rem;
+    }
+    @media (max-width: 600px) {
+      body { padding: 1.25rem 0.75rem; }
+      .container { padding: 2rem 1.25rem; border-radius: 20px; }
+    }
+
+    /* 开场短句 —— 克制，像写在笔记本扉页 */
+    .opening {
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      color: #5b6b7c;
+      border-left: 3px solid #d1d9e0;
+      padding-left: 1rem;
+      margin-bottom: 2.2rem;
+      line-height: 1.6;
+    }
+    .opening strong {
+      color: #1e293b;
+      font-weight: 460;
+    }
+    .opening span {
+      display: inline-block;
+      background: #f0f2f5;
+      padding: 0 0.3em;
+      font-style: normal;
+    }
+
+    /* 承接段落 —— 平实叙述 */
+    .intro-text {
+      font-size: 1.05rem;
+      margin-bottom: 2.8rem;
+      text-align: left;
+      color: #2c3e50;
+    }
+    .intro-text p {
+      margin-bottom: 1.2rem;
+      text-indent: 0;
+    }
+    .intro-text a {
+      color: #2266aa;
+      text-decoration: none;
+      border-bottom: 1px solid #bdd3e8;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .intro-text a:hover {
+      color: #0a3f6b;
+      border-bottom-color: #0a3f6b;
+    }
+
+    /* 特点列表 —— 干净、无图标、以文字为主 */
+    .feature-section {
+      margin: 2.5rem 0 2.2rem;
+    }
+    .feature-section h2 {
+      font-size: 1.1rem;
+      font-weight: 480;
+      letter-spacing: 0.02em;
+      color: #34495e;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.3rem;
+      border-bottom: 1px solid #eceff3;
+    }
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .feature-list li {
+      padding: 0.8rem 1rem 0.8rem 1.6rem;
+      background: #f8fafc;
+      border-radius: 14px;
+      position: relative;
+      font-size: 0.98rem;
+      color: #2c3e50;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+    }
+    .feature-list li::before {
+      content: "·";
+      position: absolute;
+      left: 0.6rem;
+      top: 0.75rem;
+      font-weight: 600;
+      color: #7f8c9b;
+      font-size: 1.3rem;
+    }
+    .feature-list li strong {
+      font-weight: 500;
+      color: #1e3a5f;
+    }
+
+    /* 温和结尾 —— 像一次收束 */
+    .closing {
+      margin-top: 2.8rem;
+      padding-top: 1.8rem;
+      border-top: 1px solid #e4e9ef;
+      font-size: 0.96rem;
+      color: #4b5a6a;
+      line-height: 1.7;
+    }
+    .closing a {
+      color: #2266aa;
+      text-decoration: none;
+      border-bottom: 1px solid #cbdbe9;
+    }
+    .closing a:hover {
+      color: #0e3c60;
+      border-bottom-color: #0e3c60;
+    }
+
+    .closing .note {
+      display: inline-block;
+      margin-top: 1rem;
+      background: #f0f3f7;
+      padding: 0.5rem 0.9rem;
+      border-radius: 30px;
+      font-size: 0.88rem;
+      color: #4c5d6e;
+    }
+
+    /* 极小字辅助 */
+    .meta-remark {
+      margin-top: 2.2rem;
+      font-size: 0.78rem;
+      color: #9aa9b9;
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- 开场短句 -->
+    <div class="opening">
+      一份关于游戏内容与资料整理的索引笔记。<br>
+      算不上指南，更像是把散落的信息按逻辑归拢。<strong>爱游戏</strong>——这是最初记在页面顶部的关键词。
+    </div>
+
+    <!-- 承接段落：从资料整理和信息索引展开 -->
+    <div class="intro-text">
+      <p>
+        在浏览大量游戏资讯、版本日志、社区讨论与评测文档的过程中，我逐渐意识到一个朴素的道理：真正有价值的信息往往分散在角落，缺乏一条轻便的线索把它们串起来。于是我开始尝试用最简洁的方式——一个页面、几组分类、若干指向原始来源的链接——搭建出一片可供回溯的小小索引。
+      </p>
+      <p>
+        这里没有复杂的数据库，也没有算法推荐。所有条目都经过人工筛选与摘要，优先保留那些对<a href="https://zh-official-i-game.com.cn">爱游戏</a>有切实帮助的内容：版本历史、机制说明、官方公告的存档位置、以及一些不易搜到的开发者访谈摘录。每一条链接背后都对应着一次阅读与判断。
+      </p>
+    </div>
+
+    <!-- 特点列表 -->
+    <div class="feature-section">
+      <h2>这份索引尝试做到的事</h2>
+      <ul class="feature-list">
+        <li><strong>来源可溯</strong> —— 每一条信息都标注了原始出处或存档位置，方便你自行核实上下文。</li>
+        <li><strong>轻量分类</strong> —— 不追求面面俱到，只整理那些经过时间检验、仍被社区反复提及的议题。</li>
+        <li><strong>定期翻新</strong> —— 根据游戏版本更新与社区讨论热度的自然变化，补充或移除条目，避免索引僵化。</li>
+        <li><strong>克制链接</strong> —— 页面内链数目维持在合理范围，确保每次跳转都有明确的预期信息量。</li>
+        <li><strong>低噪音</strong> —— 没有弹窗、排行榜、推送或社交分享按钮，只保留内容本身与必要的导航。</li>
+      </ul>
+    </div>
+
+    <!-- 温和结尾 -->
+    <div class="closing">
+      <p>
+        索引本身不是终点。它更像一张折叠起来的纸，展开后能看到若干路径——有些通往<a href="https://zh-official-i-game.com.cn">爱游戏</a>的官方公告，有些通向爱好者整理的对照表或历史归档。如果你恰好也在寻找类似的结构，或许能从这里找到一两个起点。
+      </p>
+      <p>
+        页面内容会随着信息的积累慢慢调整。下次更新时，可能会多出一条分类，也可能会删去一段已经过时的笔记。
+      </p>
+      <div class="note">
+        📋 最近一次整理：针对版本 2.1 后的界面改动补充了两条操作说明
+      </div>
+    </div>
+
+    <!-- 隐式种子（仅用于变化） -->
+    <div class="meta-remark">
+      · 04a2a821fbdd31ce ·
+    </div>
+  </div>
+</body>
+</html>
