@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>足彩竞猜 · 信息卡片页</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f9fc;
+      color: #1f2a36;
+      line-height: 1.6;
+      padding: 0 16px;
+    }
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 48px 0 60px;
+    }
+
+    /* 主视觉 — 卡片式 hero */
+    .hero-card {
+      background: linear-gradient(135deg, #e6f3f5 0%, #d4eae7 100%);
+      border-radius: 28px;
+      padding: 40px 32px;
+      margin-bottom: 48px;
+      box-shadow: 0 12px 24px -8px rgba(0, 90, 80, 0.08);
+      border: 1px solid rgba(60, 140, 130, 0.12);
+      transition: box-shadow 0.25s;
+    }
+    .hero-card:hover {
+      box-shadow: 0 18px 32px -10px rgba(0, 100, 90, 0.12);
+    }
+    .hero-title {
+      font-size: 2.3rem;
+      font-weight: 550;
+      letter-spacing: -0.02em;
+      color: #0b3d3a;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .hero-title span {
+      background: linear-gradient(to right, #1b7a6e, #2f9b8a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: #2f5b57;
+      max-width: 640px;
+      margin-bottom: 20px;
+      font-weight: 400;
+    }
+    .hero-meta {
+      display: inline-block;
+      background: rgba(40, 130, 120, 0.09);
+      padding: 8px 18px;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      color: #1b6b62;
+      border: 1px solid rgba(40, 130, 120, 0.15);
+    }
+
+    /* 用途卡片 - 网格 */
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 28px 22px;
+      box-shadow: 0 4px 16px rgba(0, 70, 60, 0.04);
+      border: 1px solid #e5f0ee;
+      transition: transform 0.15s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: #a1cdc4;
+    }
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      background: #d9ece9;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 18px;
+      font-size: 1.6rem;
+    }
+    .card h3 {
+      font-size: 1.2rem;
+      font-weight: 550;
+      color: #0d4a45;
+      margin-bottom: 10px;
+    }
+    .card p {
+      font-size: 0.95rem;
+      color: #3f5a56;
+      line-height: 1.55;
+    }
+
+    /* 适合人群卡片 (横向两块) */
+    .audience-section {
+      margin-bottom: 48px;
+    }
+    .section-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: #418b80;
+      font-weight: 500;
+      margin-bottom: 16px;
+      border-left: 4px solid #2d9b8b;
+      padding-left: 14px;
+    }
+    .audience-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .audience-item {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 20px 22px;
+      border: 1px solid #e2efec;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    }
+    .audience-item h4 {
+      font-weight: 550;
+      font-size: 1.05rem;
+      color: #0b554d;
+      margin-bottom: 6px;
+    }
+    .audience-item p {
+      font-size: 0.92rem;
+      color: #3d625c;
+    }
+
+    /* 自然链接段落 */
+    .link-paragraph {
+      background: #f0f8f6;
+      padding: 30px 28px;
+      border-radius: 24px;
+      margin-bottom: 48px;
+      border: 1px solid #c9e3de;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #1b3b37;
+    }
+    .link-paragraph a {
+      color: #0f7b6b;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 2px solid rgba(40, 150, 135, 0.25);
+      padding-bottom: 1px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .link-paragraph a:hover {
+      border-bottom-color: #0f7b6b;
+      color: #064d42;
+    }
+
+    /* FAQ 摘要 */
+    .faq-mini {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 28px 28px 20px;
+      border: 1px solid #e0efeb;
+      margin-bottom: 48px;
+    }
+    .faq-mini h3 {
+      font-size: 1.1rem;
+      font-weight: 550;
+      color: #0a4f48;
+      margin-bottom: 16px;
+    }
+    .faq-item {
+      border-bottom: 1px solid #e6f2ef;
+      padding: 14px 0;
+    }
+    .faq-item:last-of-type {
+      border-bottom: none;
+    }
+    .faq-q {
+      font-weight: 500;
+      color: #145a52;
+      font-size: 0.98rem;
+      margin-bottom: 4px;
+    }
+    .faq-a {
+      font-size: 0.92rem;
+      color: #426661;
+    }
+
+    /* 提示块 */
+    .tip-box {
+      background: #d9edeb;
+      border-radius: 18px;
+      padding: 18px 24px;
+      font-size: 0.92rem;
+      color: #0f554d;
+      border-left: 6px solid #1f9281;
+      margin-bottom: 48px;
+    }
+
+    /* 响应式 */
+    @media (max-width: 640px) {
+      .hero-title {
+        font-size: 1.8rem;
+      }
+      .hero-card {
+        padding: 28px 20px;
+      }
+      .grid-cards {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+      .audience-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .link-paragraph {
+        padding: 22px 18px;
+      }
+      .container {
+        padding: 28px 0 40px;
+      }
+    }
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 1.6rem;
+      }
+      .card {
+        padding: 22px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- 主视觉卡片 -->
+  <div class="hero-card">
+    <div class="hero-title">关于 <span>足彩竞猜</span> 的信息整理</div>
+    <div class="hero-sub">从赛事分析到理性参与，一份围绕主题展开的内容卡片集。不渲染热度，只提供清晰的结构。</div>
+    <div class="hero-meta">⚽ 基础信息 · 2025</div>
+  </div>
+
+  <!-- 用途卡片 (网格四块) -->
+  <div class="grid-cards">
+    <div class="card">
+      <div class="card-icon">📋</div>
+      <h3>赛事参考</h3>
+      <p>了解联赛、杯赛的基础规则与数据背景，帮助建立对比赛的基本认知框架。</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🧩</div>
+      <h3>信息整合</h3>
+      <p>将比分数据、球队近况、阵容信息等碎片内容整理为可读的参考笔记。</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📊</div>
+      <h3>趋势观察</h3>
+      <p>回顾过往对战记录与阶段性表现，辅助形成对赛事的持续理解。</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📌</div>
+      <h3>规则说明</h3>
+      <p>汇总常见竞猜玩法的释义与名词，降低新参与者的信息门槛。</p>
+    </div>
+  </div>
+
+  <!-- 适合人群 (两列) -->
+  <div class="audience-section">
+    <div class="section-label">适合人群</div>
+    <div class="audience-grid">
+      <div class="audience-item">
+        <h4>⚡ 对赛事感兴趣的新手</h4>
+        <p>刚开始接触足球竞猜，希望先了解基础规则与数据查询方式，不急于参与。</p>
+      </div>
+      <div class="audience-item">
+        <h4>📁 习惯自建信息库的爱好者</h4>
+        <p>喜欢用表格或笔记记录球队数据、赛季走势，并以此作为讨论与参考依据。</p>
+      </div>
+      <div class="audience-item">
+        <h4>🔍 关注联赛动态的阅读者</h4>
+        <p>不局限于单一赛事，愿意花时间阅读赛前简报、赛后统计和深度内容。</p>
+      </div>
+      <div class="audience-item">
+        <h4>🧠 理性分析型用户</h4>
+        <p>注重逻辑与数据支撑，对夸大的宣传保持距离，倾向于独立判断。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 自然链接段落 (嵌入"足彩竞猜") -->
+  <div class="link-paragraph">
+    <p>如果你正在寻找一个集中整理赛事信息、规则说明与数据参考的地方，可以关注 <a href="https://vip-zucai.com">足彩竞猜</a> 这个方向的内容。它并不强调即时推送，而是提供一种更结构化的信息组织方式，适合那些想在赛前赛后翻阅资料的用户。页面涵盖的内容包括基础玩法解析、常见赛制科普以及部分历史数据归档，整体偏向信息呈现而非引导操作。</p>
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <div class="faq-mini">
+    <h3>常见问题摘要</h3>
+    <div class="faq-item">
+      <div class="faq-q">足彩竞猜需要哪些基础知识？</div>
+      <div class="faq-a">建议先了解主流联赛的赛制、让球概念以及常见的竞猜类型。很多平台都有规则说明页面可以查阅。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">数据来源是否可靠？</div>
+      <div class="faq-a">通常参考官方统计与第三方数据网站，但任何数据都有滞后可能，建议结合多方信息交叉验证。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">是否推荐每天参与？</div>
+      <div class="faq-a">不推荐。理性参与的前提是控制频率与金额，把重心放在信息分析而非频繁操作上。</div>
+    </div>
+  </div>
+
+  <!-- 提示块 -->
+  <div class="tip-box">
+    <strong>提示：</strong> 本文档仅作为信息整理与结构展示，不构成任何参与建议。足球竞猜涉及不确定性，请保持理性，量力而行。
+  </div>
+
+</div>
+</body>
+</html>
